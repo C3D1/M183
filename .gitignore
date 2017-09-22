@@ -286,3 +286,4 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+2-Factor_Auth/2-Factor_Auth/Properties/AssemblyInfo.cs
