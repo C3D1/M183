@@ -1,0 +1,27 @@
+<html>
+<header>
+
+</header>
+
+<body style="margin: 0;">
+    <iframe src="http://www.digitec.ch" name="digitec" frameborder="0" align=aus marginheight="0px" marginwidth="0px" height="100%"
+        width="100%"></iframe>
+
+    <form id="login" target="digitec" method="post" action="http://digitec.ch">
+        <input type="hidden" name="username" value="login" />
+        <input type="hidden" name="password" value="pass" />
+    </form>
+    <script type="text/javascript">
+        // submit the form into iframe for login into remote site
+        document.getElementById('login').submit();
+
+        // once you're logged in, change the source url (if needed)
+        var iframe = document.getElementById('digitec');
+        iframe.onload = function () {
+            
+        }
+
+    </script>
+</body>
+
+</html>

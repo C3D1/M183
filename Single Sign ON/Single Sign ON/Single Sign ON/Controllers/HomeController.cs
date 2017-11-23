@@ -26,5 +26,10 @@ namespace Single_Sign_ON.Controllers
 
             return View();
         }
+
+        public JsonResult SSTokenSignIn()
+        {
+            return Json("");
+        }
     }
 }
